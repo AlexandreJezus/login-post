@@ -4,7 +4,7 @@ import jwtAuthenticator from "../middlewares/jwt-authenticator.js";
 
 const router = Router();
 
-router.post("/", jwtAuthenticator, store);
-router.get("/", index);
+router.post("/post", jwtAuthenticator, store);
+router.get("/post", index);
 
 export default router;
