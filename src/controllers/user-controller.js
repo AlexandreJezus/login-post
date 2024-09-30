@@ -1,5 +1,5 @@
 import User from "../models/user-model.js";
-import jwtServices from "../service/jwt-service.js";
+import jwtServices from "../services/jwt-service.js";
 
 export const signup = async (req, res) => {
   try {

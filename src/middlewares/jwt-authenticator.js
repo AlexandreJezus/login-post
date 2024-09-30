@@ -1,4 +1,4 @@
-import jwtService from "../service/jwt-service.js";
+import jwtService from "../services/jwt-service.js";
 
 const jwtauthenticator = (req, res, next) => {
   try {
@@ -15,4 +15,4 @@ const jwtauthenticator = (req, res, next) => {
     res.sendStatus(401);
   }
 };
-export default { jwtauthenticator };
+export default jwtauthenticator;
