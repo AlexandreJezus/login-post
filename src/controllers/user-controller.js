@@ -4,9 +4,9 @@ import jwtServices from "../services/jwt-service.js";
 export const signup = async (req, res) => {
   try {
     const user = await User.create({
+      nickname: req.body.nickname,
       email: req.body.email,
       password: req.body.password,
-      nickname: req.body.nickname,
     });
     const token = jwtServices.generateAcesssToken(user);
 
