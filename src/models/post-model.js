@@ -6,18 +6,11 @@ const postSchema = new Schema({
     required: true,
   },
   User: {
-    type: Schema.Types.ObjectId,
+    type: Schema.ObjectId,
     ref: "User",
+    required: true,
   },
 });
-
-postSchema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 10);
-});
-
-postSchema.methods.isValidPassword = async function (password) {
-  return await bcrypt.compare(password, this.password);
-};
 
 const Post = model("Post", postSchema);
 

@@ -5,7 +5,7 @@ const generateAcesssToken = (user) => {
     {
       _id: user._id,
       email: user.email,
-      password: user.password,
+      role: user.role,
     },
     process.env.JWT_PRIVATE_KEY,
     {
@@ -15,9 +15,8 @@ const generateAcesssToken = (user) => {
   return token;
 };
 
-const verifyAcessToken = (token) => {
+const verifyAcessToken = (token) =>
   jsonWebToken.verify(token, process.env.JWT_PRIVATE_KEY);
-};
 
 export default {
   generateAcesssToken,
