@@ -3,26 +3,26 @@ import jwtServices from "../services/jwt-service.js";
 
 export const signup = async (req, res) => {
   try {
-    const user = await User.create({
-      nickname: req.body.nickname,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    const { email, password } = req.body;
+    const user = await User.create({ email, password });
     const token = jwtServices.generateAcesssToken(user);
 
     res.status(201).json(token);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).send(error.message);
   }
 };
 
 export const login = async (req, res) => {
   try {
+    const { email, password } = req.body;
+
     const user = await User.findOne({
-      email: req.body.email,
+      email,
+      password,
     }).exec();
 
-    if (user && (await user.isValidPassword(req.body.password))) {
+    if (user && user.isValidPassword(password)) {
       const token = jwtServices.generateAcesssToken(user);
       res.json(token);
     } else {
@@ -31,6 +31,6 @@ export const login = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).send(error.message);
   }
 };

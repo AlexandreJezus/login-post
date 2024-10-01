@@ -1,4 +1,4 @@
-import JsonWebToken from "jsonwebtoken";
+import jsonWebToken from "jsonwebtoken";
 
 const generateAcesssToken = (user) => {
   jsonWebToken.sign(
@@ -12,7 +12,6 @@ const generateAcesssToken = (user) => {
       expiresIn: "1d",
     }
   );
-  return token;
 };
 
 const verifyAcessToken = (token) =>

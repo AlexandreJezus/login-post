@@ -11,6 +11,7 @@ const jwtauthenticator = (req, res, next) => {
     } else {
       throw new Error("");
     }
+    throw new Error();
   } catch (error) {
     res.sendStatus(401);
   }
