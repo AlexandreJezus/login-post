@@ -2,6 +2,7 @@ import { Router } from "express";
 import { signup, login } from "../controllers/user-controller.js";
 import jwtauthenticator from "../middlewares/jwt-authenticator.js";
 import authorizer from "../middlewares/authorizer.js";
+import { destroy, update } from "../controllers/post-controller.js";
 
 const router = Router();
 
@@ -9,7 +10,13 @@ router.post("/signup", signup);
 router.post("/login", jwtauthenticator(), authorizer("ADM"), login);
 
 router.use(jwtauthenticator);
-router.use(authorizer("ADMINISTRATOR"));
+router.use(authorizer("ADMINISTRATOR", "SUPPORT"));
+
+router.get("/", index);
+router.get("/", show);
+router.post("/", store);
+router.put("/:id", update);
+router.delete("/:id", destroy);
 
 // crud usuário
 

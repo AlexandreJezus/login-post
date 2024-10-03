@@ -18,8 +18,9 @@ export const store = async (req, res) => {
 
 export const index = async (req, res) => {
   try {
-    const { text } = req.body;
-    const user = req.user._id;
+    const filter = {
+      user: { $in: req.user.following },
+    };
 
     const content = await Post.find().exec();
 

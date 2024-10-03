@@ -1,4 +1,5 @@
 import jwtService from "../services/jwt-service.js";
+import User from "../models/user-model.js";
 
 const jwtauthenticator = (req, res, next) => {
   try {
@@ -6,7 +7,7 @@ const jwtauthenticator = (req, res, next) => {
     const user = jwtService.verifyAcessToken(token);
 
     if (user) {
-      req.user = user;
+      req.user = User.findById(user._id).exec();
       next();
     } else {
       throw new Error("");
