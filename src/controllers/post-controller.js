@@ -71,3 +71,17 @@ export const destroy = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
+
+export const show = async (req, res) => {
+  try {
+    const filter = {
+      user: { $in: req.user.following },
+    };
+
+    const content = await Post.find().exec();
+
+    res.json(content);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
