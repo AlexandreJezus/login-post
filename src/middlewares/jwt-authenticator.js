@@ -1,4 +1,4 @@
-import jwtService from "../services/jwt-service.js";
+import { verifyAcessToken } from "../services/jwt-service.js";
 import User from "../models/user-model.js";
 
 export default async (req, res, next) => {
