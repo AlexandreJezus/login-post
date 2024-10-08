@@ -33,6 +33,16 @@ export const index = async (req, res) => {
   }
 };
 
+export const show = async (req, res) => {
+  try {
+    const content = await User.findById(req.params.id).exec();
+
+    res.json(content);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
