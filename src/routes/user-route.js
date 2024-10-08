@@ -11,7 +11,7 @@ import {
 } from "../controllers/user-controller.js";
 import jwtauthenticator from "../middlewares/jwt-authenticator.js";
 import authorizer from "../middlewares/authorizer.js";
-import { destroy, update } from "../controllers/post-controller.js";
+import { update } from "../controllers/post-controller.js";
 
 const router = Router();
 
