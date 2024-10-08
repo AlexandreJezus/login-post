@@ -1,7 +1,7 @@
 import jwtService from "../services/jwt-service.js";
 import User from "../models/user-model.js";
 
-const jwtauthenticator = (req, res, next) => {
+export default async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     const user = jwtService.verifyAcessToken(token);
@@ -17,4 +17,3 @@ const jwtauthenticator = (req, res, next) => {
     res.sendStatus(401);
   }
 };
-export default jwtauthenticator;
