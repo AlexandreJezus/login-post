@@ -14,7 +14,7 @@ const jwtauthenticator = (req, res, next) => {
     }
     throw new Error();
   } catch (error) {
-    res.sendStatus(401);
+    res.sendStatus(401).send(error.message);
   }
 };
 export default jwtauthenticator;
