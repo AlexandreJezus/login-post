@@ -13,6 +13,26 @@ export const signup = async (req, res) => {
   }
 };
 
+export const store = async (req, res) => {
+  try {
+    const content = await User.create(req.body);
+
+    res.status(201).json(content);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+export const index = async (req, res) => {
+  try {
+    const content = await User.find().exec();
+
+    res.json(content);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
