@@ -1,6 +1,6 @@
 import jsonWebToken from "jsonwebtoken";
 
-const generateAcesssToken = (user) => {
+export const generateAcesssToken = (user) => {
   jsonWebToken.sign(
     {
       _id: user._id,
@@ -14,10 +14,5 @@ const generateAcesssToken = (user) => {
   );
 };
 
-const verifyAcessToken = (token) =>
+export const verifyAcessToken = (token) =>
   jsonWebToken.verify(token, process.env.JWT_PRIVATE_KEY);
-
-export default {
-  generateAcesssToken,
-  verifyAcessToken,
-};
